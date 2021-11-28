@@ -14,11 +14,17 @@ class PostsController < ApplicationController
 
   def create
     #inspectメソッドは対象の型に沿った文字列を返す
+    #以下の記述で画面上にパラメータ内の値を確認することができる
     # render plain: params[:post].inspect
-    # save
+
+    #ストロングパラメータを通していない為セキュリティー上問題がある
     # @post = Post.new(params[:post])
+
+    #以下のように一行にストロングパラメータをまとめて記述することもできる
     # @post = Post.new(params.require(:post).permit(:title, :body))
-    @post = Post.new(post_params) #post_paramsはpriavte内の定数(post_params)を利用している
+
+    #post_paramsはpriavte内のpost_paramsメソッドを利用している
+    @post = Post.new(post_params)
 
     if @post.save
       # redirect
