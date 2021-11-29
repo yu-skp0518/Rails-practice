@@ -8,6 +8,11 @@
     <% @post.comments.each do |comment| %>
       <li>
         <%= comment.body %>
+        <%= link_to '[x]',
+        post_comment_path(@post,comment),
+        method: :delete,
+        class: 'command',
+        data: { confirm: 'Sure?' }%>
       </li>
     <% end %>
   </ul>

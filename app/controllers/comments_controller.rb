@@ -8,7 +8,8 @@ class CommentsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:post_id])
-    @post.comments.create(comment_params)
+    @comment = @post.comments.find(params[:id])
+    @comment.destroy
     redirect_to post_path(@post)
   end
 
